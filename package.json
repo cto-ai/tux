@@ -25,5 +25,17 @@
     "pre-commit": "^1.2.2",
     "standard": "^16.0.3",
     "tapx": "0.2.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cto-ai/tux.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/cto-ai/tux/issues"
+  },
+  "homepage": "https://github.com/cto-ai/tux#readme"
 }
