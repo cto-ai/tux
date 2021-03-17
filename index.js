@@ -67,4 +67,3 @@ export function render (message) {
   const rendered = chalk(new Template(message))
   return rendered
 }
-
