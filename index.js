@@ -61,9 +61,10 @@ export function theme (name = mode) {
   throw Error(`${name} mode not recognized`)
 }
 
-export const spinner = ora({ spinner: 'dots2', color: 'tuxSecondary', interval: 110 })
+export const spinner = ora({ spinner: 'dots2', color: 'tuxSecondary', interval: 110, stream: process.stdin })
 
 export function render (message) {
   const rendered = chalk(new Template(message))
   return rendered
 }
+
