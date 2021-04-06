@@ -19,7 +19,7 @@ const dark = {
 const light = {
   tuxCallOut: chalk.hex('#0DE0CF'),
   tuxAction: chalk.hex('#87E3F8'),
-  tuxPrimary: chalk.hex('#f7f7f7'),
+  tuxPrimary: chalk.hex('#080808'),
   tuxSecondary: chalk.hex('#7278ac'),
   tuxTertiary: chalk.hex('#bbbed8'),
   tuxSuccess: chalk.hex('#4cf679'),
