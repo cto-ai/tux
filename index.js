@@ -1,6 +1,7 @@
+import { createRequire } from 'module'
 import link from 'terminal-link'
 import ora from 'ora'
-import chalk from 'chalk'
+const chalk = createRequire(createRequire(import.meta.url).resolve('ora'))('chalk')
 
 const dark = {
   tuxCallOut: chalk.hex('#0DE0CF'),
@@ -33,6 +34,20 @@ const light = {
 const modes = { dark, light }
 let mode = 'dark'
 
+extend(chalk)
+
+export function extend (chalk) {
+  chalk.tuxUrl = (input) => {
+    const [text, url] = input.split(' ')
+    return link(chalk.tuxMulti2(text), url)
+  }
+  chalk.tuxTerm = (input) => {
+    return `${chalk.tuxSuccess('$')} ${chalk.tuxCallOut(input)}`
+  }
+
+  Object.assign(chalk, modes[mode])
+}
+
 class Template extends Array {
   constructor (msg) {
     super(1)
@@ -40,16 +55,6 @@ class Template extends Array {
     this.raw = this
   }
 }
-
-chalk.tuxUrl = (input) => {
-  const [text, url] = input.split(' ')
-  return link(chalk.tuxMulti2(text), url)
-}
-chalk.tuxTerm = (input) => {
-  return `${chalk.tuxSuccess('$')} ${chalk.tuxCallOut(input)}`
-}
-
-Object.assign(chalk, modes[mode])
 
 export function theme (name = mode) {
   if (name === mode) return chalk
@@ -61,7 +66,7 @@ export function theme (name = mode) {
   throw Error(`${name} mode not recognized`)
 }
 
-export const spinner = ora({ spinner: 'dots2', color: 'tuxSecondary', interval: 110, stream: process.stdin })
+export const spinner = ora({ spinner: 'dots2', color: 'tuxSecondary', interval: 110, stream: process.stdout })
 
 export function render (message) {
   const rendered = chalk(new Template(message))
