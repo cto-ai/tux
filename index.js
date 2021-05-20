@@ -31,6 +31,8 @@ const light = {
   tuxEmphatic: chalk.hex('#000000')
 }
 
+console.log('LIGHT', light)
+
 const modes = { dark, light }
 let mode = 'dark'
 
@@ -67,6 +69,8 @@ export function theme (name = mode) {
 }
 
 export const spinner = ora({ spinner: 'dots2', color: 'tuxSecondary', interval: 110, stream: process.stdout })
+
+
 
 export function render (message) {
   const rendered = chalk(new Template(message))
