@@ -3,6 +3,8 @@ import link from 'terminal-link'
 import ora from 'ora'
 const chalk = createRequire(createRequire(import.meta.url).resolve('ora'))('chalk')
 
+if (process.env.CI) chalk.level = 3
+
 const dark = {
   tuxCallOut: chalk.hex('#0DE0CF'),
   tuxAction: chalk.hex('#87E3F8'),
@@ -30,8 +32,6 @@ const light = {
   tuxMulti3: chalk.hex('#F6934C'),
   tuxEmphatic: chalk.hex('#000000')
 }
-
-console.log('LIGHT', light)
 
 const modes = { dark, light }
 let mode = 'dark'
